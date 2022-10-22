@@ -10,7 +10,8 @@ export async function getStaticPaths(){
     })
 
     return {
-        fallback: false,
+        //fallback: false,
+        fallback: true,
         paths: paths
     }
 }
@@ -29,9 +30,15 @@ const ProdutosPorId = (props) => {
     const { produtos } = props;
     return (
         <div>
-            <h1>Produto pelo id {produtos.id}</h1>
-            <h1>Produto: {produtos.name}</h1>
-            <h1>Marca: {produtos.brand}</h1>
+            {produtos ? 
+                <> 
+                    <h1>Produto pelo id {produtos.id}</h1>
+                    <h1>Produto: {produtos.name}</h1>
+                    <h1>Marca: {produtos.brand}</h1>
+                </>
+                 : 
+                false
+            }
         </div>
     );
 };
